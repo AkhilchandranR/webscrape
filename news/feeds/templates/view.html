@@ -1,0 +1,23 @@
+{% extends 'domain.html' %}
+{% load static %}
+{% block content %}
+<h2>{{feeds.headline}}</h2><br>
+{{feeds.date}}
+<i>Author:{{feeds.author}}</i><br>
+<img src="{{feeds.imageURL}}" alt="img22.08"><br><br>
+<p>{{feeds.content}}</p>
+<hr>
+<a href="{% url 'addcomments' feeds.id %}">add comments</a><br>
+
+{% if not comments %}
+no comments yet..
+{% else %}
+<p><h5>{{ feeds.noofcomms }} comments</h5></p><hr><br>
+
+{% for comment in comments %}
+<strong>{{comment.name}}</strong><br>
+<p>{{comment.body}}</p>
+<hr>
+{% endfor %}
+{% endif %}
+{% endblock content %}

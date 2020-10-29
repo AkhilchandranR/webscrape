@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% for feed in feeds %}
+
+<strong>{{ feed.headline }}</strong><br>
+<img src="{{feed.imageURL}}"><br><br>
+<i>Author:{{ feed.author }}</i><br>
+<a href="{% url 'viewposts' feed.id %}" >read>>..</a>
+<hr>
+{% endfor %}
+
+{% endblock content %}
